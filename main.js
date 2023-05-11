@@ -24,8 +24,25 @@ scene("ultrahand-playground", () => {
         pos(300, 400),
         area(),
         outline(3),
-        body()
+        body(),
+        {
+            speed: 300
+        }
     ])
+
+    onKeyDown('a', () => {
+        player.move(-player.speed, 0)
+    })
+
+    onKeyDown('d', () => {
+        player.move(player.speed, 0)
+    })
+
+    onKeyPress('w', () => {
+        if (player.isGrounded()) {
+            player.jump()
+        }
+    })
 
     for (let i = 0; i < 4; i++) {
         add([
@@ -33,7 +50,8 @@ scene("ultrahand-playground", () => {
             pos(10, 100),
             area(),
             outline(3),
-            body()
+            body(),
+            "wood"
         ])
     }
 })
